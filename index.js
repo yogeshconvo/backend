@@ -11,7 +11,8 @@ import attendanceRoutes from "./routes/attendanceRoutes.js";
 import announcementRoute from "./routes/announcementRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 dotenv.config();
-
+import profileRoutes from "./routes/profileRoutes.js";
+import messageRoutes from "./routes/messageRoutes.js";
 const app = express();
 connectDB();
 app.use(cors());
@@ -24,8 +25,10 @@ app.use("/api/ceo", ceoRoutes)
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/announcement", announcementRoute);
+app.use("/api/profile", profileRoutes);
+app.use("/api/chat", messageRoutes);
 
-// Test route
+
 app.get("/", (req, res) => {
     res.send("Office Manager Backend Running...");
 });

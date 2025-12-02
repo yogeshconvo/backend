@@ -1,0 +1,11 @@
+import express from "express";
+import { protect } from "../middleware/authMiddleware.js";
+import { allowRoles } from "../middleware/roleMiddleware.js";
+import { getMyProfile, updateMyProfile, updateProfileImage, adminUpdateUserProfile, getUserProfile } from "../controllers/profileController.js";
+const router = express.Router();
+router.get("/me", protect, getMyProfile);
+router.put("/me", protect, updateMyProfile);
+router.put("/me/image", protect, updateProfileImage);
+router.put("/:id", protect, allowRoles("admin", "manager"), adminUpdateUserProfile);
+router.get("/:id", protect, getUserProfile);
+export default router;
