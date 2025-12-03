@@ -17,4 +17,5 @@ router.post("/message", protect, sendMessage);
 router.get("/messages/:conversationId", protect, getMessages);
 router.put("/message/read/:messageId", protect, markAsRead);
 router.delete("/message/:messageId", protect, deleteMessage);
+router.put("/read/:conversationId", protect, markAsRead);
 export default router;
